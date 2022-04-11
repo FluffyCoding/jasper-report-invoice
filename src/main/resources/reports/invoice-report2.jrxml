@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.0.final using JasperReports Library version 6.19.0-646c68931cebf1a58bc65c4359d1f0ca223c5e94  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="invoice-report" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isFloatColumnFooter="true" uuid="4e620f79-a612-4a68-a5b2-78260e06c054">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="net.sf.jasperreports.print.create.bookmarks" value="false"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#FAEBD7">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_CH" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="CustomerContacts" uuid="9aca34f7-a881-46c1-9754-0007246ce9cb">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="contactType" class="java.lang.String"/>
+		<field name="contactNo" class="java.lang.String"/>
+	</subDataset>
+	<subDataset name="InvoiceItems" uuid="b49b1972-dcb4-4be5-a722-dbc9097665d0">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+		<field name="sequenceNo" class="java.lang.Integer"/>
+		<field name="description" class="java.lang.String"/>
+		<field name="itemPrice" class="java.math.BigDecimal"/>
+		<field name="vatValue" class="java.math.BigDecimal"/>
+		<field name="totalAmount" class="java.math.BigDecimal"/>
+		<variable name="totalPrice" class="java.math.BigDecimal" calculation="Sum">
+			<variableExpression><![CDATA[$F{itemPrice}]]></variableExpression>
+		</variable>
+		<variable name="totalVat" class="java.math.BigDecimal" calculation="Sum">
+			<variableExpression><![CDATA[$F{vatValue}]]></variableExpression>
+		</variable>
+		<variable name="totalNetAmount" class="java.math.BigDecimal" calculation="Sum">
+			<variableExpression><![CDATA[$F{totalAmount}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="CustomerContacts" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="InvoiceItems" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="Currency" class="java.lang.String"/>
+	<parameter name="CustomerName" class="java.lang.String"/>
+	<parameter name="InvoiceNo" class="java.lang.Long"/>
+	<parameter name="InvoiceDate" class="java.util.Date"/>
+	<parameter name="CustomerAddress" class="java.lang.String"/>
+	<parameter name="GrossAmount" class="java.math.BigDecimal"/>
+	<parameter name="VatAmount" class="java.math.BigDecimal"/>
+	<parameter name="NetAmount" class="java.math.BigDecimal"/>
+	<parameter name="discountAmount" class="java.math.BigDecimal"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="Currency" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="32" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout"/>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="111">
+			<frame>
+				<reportElement x="1" y="31" width="359" height="74" uuid="c2735ed0-9f94-4ac1-9796-6a7dc117e1d8"/>
+				<box padding="0">
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+				</box>
+				<textField>
+					<reportElement x="3" y="3" width="211" height="32" uuid="2df3bd4e-a049-49ec-86f0-0bb6f89f0eaf">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$P{CustomerName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="4" y="37" width="210" height="33" uuid="2b35dfe5-45d1-4b48-aa54-a54460bde275">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$P{CustomerAddress}]]></textFieldExpression>
+				</textField>
+				<componentElement>
+					<reportElement x="224" y="4" width="130" height="15" uuid="ae1c7d87-7d2b-47d9-a9ec-1f5daf351954">
+						<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+						<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+						<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+						<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+						<datasetRun subDataset="CustomerContacts" uuid="439f61d2-db7b-4e7b-aaf2-4d6b322f2e42">
+							<dataSourceExpression><![CDATA[$P{CustomerContacts}]]></dataSourceExpression>
+						</datasetRun>
+						<jr:column width="60" uuid="caaa995c-58ae-4ecf-a95b-5dc022e7dc3e">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+							<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							<jr:detailCell style="Table_TD" height="15">
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<textField textAdjust="StretchHeight">
+									<reportElement x="0" y="0" width="60" height="15" uuid="310f0ce6-8783-4041-9d61-cbf29268744c">
+										<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+									</reportElement>
+									<box>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{contactType}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+						<jr:column width="70" uuid="d2591ee3-d54d-48f1-a25d-4b95ea4a130f">
+							<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+							<jr:detailCell style="Table_TD" height="15">
+								<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+								<property name="com.jaspersoft.studio.unit.height" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+								<textField textAdjust="ScaleFont">
+									<reportElement x="0" y="0" width="70" height="15" uuid="e4b4f5f3-3760-4cc3-bce5-8da53195a7cc">
+										<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+									</reportElement>
+									<box>
+										<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+										<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									</box>
+									<textElement textAlignment="Center" verticalAlignment="Middle">
+										<font size="7"/>
+									</textElement>
+									<textFieldExpression><![CDATA[$F{contactNo}]]></textFieldExpression>
+								</textField>
+							</jr:detailCell>
+						</jr:column>
+					</jr:table>
+				</componentElement>
+			</frame>
+			<staticText>
+				<reportElement x="1" y="10" width="359" height="21" uuid="f2ae0a5d-dff9-4218-91d5-ee9b921084c5"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+					<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[BILL TO:]]></text>
+			</staticText>
+			<frame>
+				<reportElement x="427" y="8" width="140" height="52" uuid="1d61748d-1ef3-42ba-8963-fd1b717b316c"/>
+				<staticText>
+					<reportElement x="4" y="25" width="50" height="20" uuid="fc694d66-1f66-4bd2-9ace-f11357e4e316"/>
+					<box rightPadding="4">
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Invoice #]]></text>
+				</staticText>
+				<textField pattern="dd-MM-yyyy">
+					<reportElement x="54" y="5" width="84" height="20" uuid="91b20d3f-a624-498b-aa23-2f0df97ca505"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$P{InvoiceDate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="4" y="5" width="50" height="20" uuid="723b3124-a683-42f2-bfdc-417bb2e369e0"/>
+					<box rightPadding="4">
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Date:]]></text>
+				</staticText>
+				<textField pattern="#,##0.###;(#,##0.###-)">
+					<reportElement x="54" y="25" width="84" height="20" uuid="d617126e-2754-4c6f-b10d-5e7d283d1c27"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{InvoiceNo}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="60">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.FreeLayout"/>
+			<componentElement>
+				<reportElement x="0" y="0" width="572" height="60" uuid="a0950746-1d6e-4865-a82d-8ec89265d64a">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table 1_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table 1_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table 1_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="InvoiceItems" uuid="eade7570-8709-4b3f-ae4f-4aaeb922716b">
+						<dataSourceExpression><![CDATA[$P{InvoiceItems}]]></dataSourceExpression>
+					</datasetRun>
+					<jr:column width="40" uuid="a5fd3ea3-adc3-4c8c-a2fd-92f1b39ffca2">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<box>
+								<pen lineStyle="Dashed"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="40" height="30" uuid="ddf10440-9d1e-4110-8968-c22b59bf6759"/>
+								<box>
+									<pen lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Bell MT" size="12"/>
+								</textElement>
+								<text><![CDATA[No.]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<box>
+								<pen lineStyle="Dashed"/>
+							</box>
+							<textField>
+								<reportElement x="0" y="0" width="40" height="20" uuid="15e8b63a-2276-4519-a0b2-caa9803ca4a1"/>
+								<box>
+									<pen lineWidth="0.5" lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{sequenceNo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="320" uuid="7ce188f8-1e94-4fc0-9a1c-501bb3cf3f19">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<box>
+								<pen lineStyle="Dashed"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="320" height="30" uuid="ced1c51a-c8fe-456f-b843-6a8897cac1b4"/>
+								<box>
+									<pen lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Bell MT" size="12"/>
+								</textElement>
+								<text><![CDATA[Item Description]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<box>
+								<pen lineStyle="Dotted"/>
+							</box>
+							<textField textAdjust="ScaleFont">
+								<reportElement x="0" y="0" width="320" height="20" uuid="78036cae-d945-4edf-8a6f-94c57bdd3c6f"/>
+								<box topPadding="0" leftPadding="6" bottomPadding="0" rightPadding="0">
+									<pen lineWidth="0.5" lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{description}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="5347f20b-4ff4-480a-84ff-dd9de247977f">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<box>
+								<pen lineStyle="Dashed"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="30" uuid="4e55ca0e-5fa5-4550-8906-1a14faed3b5d"/>
+								<box>
+									<pen lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Bell MT" size="12"/>
+								</textElement>
+								<text><![CDATA[Amount]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<box>
+								<pen lineStyle="Dashed"/>
+							</box>
+							<textField textAdjust="ScaleFont">
+								<reportElement x="0" y="0" width="70" height="20" uuid="3f89796c-03e2-4e28-bdb6-750f48a51e8b"/>
+								<box padding="4" topPadding="4" bottomPadding="4">
+									<pen lineWidth="0.5" lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{itemPrice}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="15ae895a-fb0d-431a-890f-fbf21dad1332">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<box>
+								<pen lineStyle="Dashed"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="30" uuid="62056bc7-68fe-4e4d-9574-56e0cef7b23d"/>
+								<box>
+									<pen lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Bell MT" size="12"/>
+								</textElement>
+								<text><![CDATA[Vat]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<box>
+								<pen lineStyle="Dashed"/>
+							</box>
+							<textField>
+								<reportElement x="0" y="0" width="60" height="20" uuid="00c75e32-66be-46b4-88cd-2b987fa455db"/>
+								<box padding="4">
+									<pen lineWidth="0.5" lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{vatValue}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="82" uuid="524f2eb6-58bf-4378-a7bb-c8d8c7018d3c">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:columnHeader style="Table 1_CH" height="30" rowSpan="1">
+							<box>
+								<pen lineStyle="Dashed"/>
+							</box>
+							<staticText>
+								<reportElement x="0" y="0" width="82" height="30" uuid="f7550d23-2962-4c56-a3ef-e1ade4cca6da"/>
+								<box>
+									<pen lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="Bell MT" size="12"/>
+								</textElement>
+								<text><![CDATA[Total]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="Table 1_TD" height="20">
+							<box>
+								<pen lineStyle="Dashed"/>
+							</box>
+							<textField>
+								<reportElement x="0" y="0" width="82" height="20" uuid="e2ddac2a-d631-42cc-bbab-3f967d3e6b32"/>
+								<box padding="4">
+									<pen lineWidth="0.5" lineStyle="Dashed"/>
+									<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+									<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+								</box>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="8"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{totalAmount}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<line>
+				<reportElement stretchType="ContainerHeight" x="572" y="0" width="1" height="60" uuid="3aaf4d92-3a89-48b1-8f55-d0ecf895a6b3">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.0" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="107">
+			<frame>
+				<reportElement positionType="Float" x="0" y="3" width="572" height="100" uuid="079100e1-ec08-4a29-bb80-d23ca2b6c555"/>
+				<box>
+					<pen lineWidth="0.75" lineStyle="Dashed"/>
+				</box>
+				<frame>
+					<reportElement x="398" y="8" width="170" height="81" uuid="0730c6ba-e9b3-4089-af07-93dc3c34d079"/>
+					<box>
+						<pen lineWidth="0.25" lineStyle="Dashed"/>
+						<topPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						<leftPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						<bottomPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						<rightPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+					</box>
+					<staticText>
+						<reportElement x="1" y="1" width="77" height="20" uuid="b7db1ffe-f91e-4ba0-bc81-d99a3ea6079c"/>
+						<box leftPadding="3">
+							<pen lineWidth="0.25" lineStyle="Dashed"/>
+							<topPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<leftPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<bottomPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<rightPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Sub Total:]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="78" y="1" width="91" height="20" uuid="36ffe63b-7c7f-45ca-a1ee-c8845478f126"/>
+						<box rightPadding="3">
+							<pen lineWidth="0.25" lineStyle="Dashed"/>
+							<topPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<leftPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<bottomPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<rightPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font size="11"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$P{GrossAmount}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="1" y="21" width="77" height="20" uuid="6ab07df9-afcd-484d-92e6-40c656f8513e"/>
+						<box leftPadding="3">
+							<pen lineWidth="0.25" lineStyle="Dashed"/>
+							<topPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<leftPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<bottomPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<rightPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Total Vat]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="1" y="41" width="77" height="20" uuid="3f0b41d5-973e-45d5-b3c2-faa5caf93c74"/>
+						<box leftPadding="3">
+							<pen lineWidth="0.25" lineStyle="Dashed"/>
+							<topPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<leftPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<bottomPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<rightPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font size="12" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Discount]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="1" y="61" width="77" height="20" uuid="dc4fd4d5-c7cc-4d77-a3a4-46ba89d02aa0"/>
+						<box leftPadding="3">
+							<pen lineWidth="0.25" lineStyle="Dashed"/>
+							<topPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<leftPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<bottomPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<rightPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font size="11" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Total Amount]]></text>
+					</staticText>
+					<textField>
+						<reportElement x="78" y="21" width="91" height="20" uuid="1bbb0d6c-e905-42ef-a6c8-43468e27ff8b"/>
+						<box rightPadding="3">
+							<pen lineWidth="0.25" lineStyle="Dashed"/>
+							<topPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<leftPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<bottomPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<rightPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle"/>
+						<textFieldExpression><![CDATA[$P{VatAmount}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="78" y="41" width="91" height="20" uuid="f729b5b8-ab5a-4ffc-a104-56e0b258f295"/>
+						<box rightPadding="3">
+							<pen lineWidth="0.25" lineStyle="Dashed"/>
+							<topPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<leftPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<bottomPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<rightPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle"/>
+						<textFieldExpression><![CDATA[$P{discountAmount}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="78" y="61" width="91" height="20" uuid="d714bbb1-43eb-47e7-9487-e03d57aed277"/>
+						<box rightPadding="3">
+							<pen lineWidth="0.25" lineStyle="Dashed"/>
+							<topPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<leftPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<bottomPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+							<rightPen lineWidth="0.25" lineStyle="Dashed" lineColor="#000000"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle"/>
+						<textFieldExpression><![CDATA[$P{NetAmount}]]></textFieldExpression>
+					</textField>
+				</frame>
+				<frame>
+					<reportElement x="10" y="11" width="309" height="80" uuid="9925fcfb-633e-427c-bec0-d58c187f8bdc"/>
+					<box>
+						<pen lineWidth="0.5" lineStyle="Dashed"/>
+						<topPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineStyle="Dashed" lineColor="#000000"/>
+					</box>
+					<line>
+						<reportElement x="19" y="27" width="271" height="1" uuid="8b833248-074b-495d-b140-a939279c546e">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<graphicElement>
+							<pen lineWidth="0.5" lineStyle="Dashed"/>
+						</graphicElement>
+					</line>
+					<line>
+						<reportElement x="18" y="60" width="271" height="1" uuid="bf9ebbd6-21c1-4965-ae29-728305a8dd5f">
+							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+						</reportElement>
+						<graphicElement>
+							<pen lineWidth="0.5" lineStyle="Dashed"/>
+						</graphicElement>
+					</line>
+				</frame>
+			</frame>
+		</band>
+	</columnFooter>
+	<lastPageFooter>
+		<band height="33"/>
+	</lastPageFooter>
+</jasperReport>
